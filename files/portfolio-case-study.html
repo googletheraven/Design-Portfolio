@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Quest - UX Portfolio Case Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-sage: #A8B5A0;
+            --deep-teal: #4A7C7E;
+            --midnight-blue: #2D3E50;
+            --soft-cream: #F5F3EE;
+            --warm-sand: #E6DDD0;
+            --accent-peach: #E8C5B5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-cream);
+            color: var(--midnight-blue);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(245, 243, 238, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(168, 181, 160, 0.2);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-teal);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--midnight-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--deep-teal);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 5% 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            background: var(--primary-sage);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--midnight-blue);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--deep-teal);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            flex: 1;
+        }
+        
+        .meta-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--deep-teal);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .meta-value {
+            font-size: 1rem;
+            color: var(--midnight-blue);
+        }
+        
+        /* Featured Image */
+        .featured-image {
+            margin: 3rem 5%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .demo-frame {
+            width: 100%;
+            height: 700px;
+            border: none;
+            border-radius: 20px;
+            background: white;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--midnight-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--midnight-blue);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--midnight-blue);
+            opacity: 0.9;
+        }
+        
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--deep-teal);
+            margin-bottom: 0.8rem;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .process-step {
+            background: linear-gradient(135deg, var(--primary-sage), var(--deep-teal));
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+        }
+        
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            opacity: 0.3;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--deep-teal);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-desc {
+            font-size: 0.95rem;
+            color: var(--midnight-blue);
+            opacity: 0.8;
+        }
+        
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .image-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--deep-teal);
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+        
+        /* Color Palette */
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .color-swatch {
+            flex: 1;
+            min-width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .color-value {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        
+        /* Key Learnings */
+        .learnings-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .learnings-list li {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-sage);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .learnings-list li strong {
+            color: var(--deep-teal);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--deep-teal), var(--primary-sage));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(74, 124, 126, 0.3);
+            margin-top: 1rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(74, 124, 126, 0.4);
+        }
+        
+        /* Footer */
+        .portfolio-footer {
+            background: var(--midnight-blue);
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            margin-top: 5rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .demo-frame {
+                height: 500px;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-brand">Kevali Shah</div>
+        <ul class="nav-links">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#demo">Live Demo</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero animate-in">
+        <div class="project-tag">UX/UI Design • Web Development</div>
+        <h1>Serenity Quest</h1>
+        <p class="hero-subtitle">A gamified meditation platform that makes mindfulness engaging through progress tracking, rewards, and beautiful design</p>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <div class="meta-label">Role</div>
+                <div class="meta-value">UX Designer, UI Designer, Front-end Developer</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Timeline</div>
+                <div class="meta-value">4 weeks (Sprint-based)</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Tools</div>
+                <div class="meta-value">Figma, HTML/CSS/JavaScript</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Demo -->
+    <section class="featured-image" id="demo">
+        <iframe class="demo-frame" src="meditation-website.html"></iframe>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section" id="overview">
+        <h2>Project Overview</h2>
+        <p>Serenity Quest reimagines meditation apps by applying gamification principles to create sustained user engagement. Many meditation apps suffer from high drop-off rates after initial enthusiasm wanes. This project explores how game mechanics can motivate consistent mindfulness practice without compromising the peaceful nature of meditation.</p>
+        
+        <div class="two-column">
+            <div class="card">
+                <h4>The Challenge</h4>
+                <p>How might we encourage consistent meditation practice among college students who struggle with maintaining wellness habits?</p>
+            </div>
+            <div class="card">
+                <h4>The Solution</h4>
+                <p>A gamified meditation platform with XP progression, streak tracking, milestone unlocking, and calming aesthetics that balances motivation with mindfulness.</p>
+            </div>
+        </div>
+
+        <h3>Key Metrics & Impact</h3>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">📈</div>
+                <div class="feature-title">Engagement System</div>
+                <div class="feature-desc">XP and gems reward system with persistent progress tracking starting from Level 0</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔥</div>
+                <div class="feature-title">Streak Motivation</div>
+                <div class="feature-desc">Daily streak counter encourages habit formation with smart date tracking</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⏱️</div>
+                <div class="feature-title">Flexible Sessions</div>
+                <div class="feature-desc">5, 10, and 15-minute options for different schedules</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Progress Path</div>
+                <div class="feature-desc">Visual journey from Beginner (Level 0) to Master with unlockable milestones</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="content-section" id="process">
+        <h2>Design Process</h2>
+        
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-title">Research</div>
+                <div class="step-desc">User interviews with college students about meditation habits and barriers</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-title">Define</div>
+                <div class="step-desc">Identified key pain points: lack of motivation and visible progress</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-title">Ideate</div>
+                <div class="step-desc">Explored gamification mechanics that align with mindfulness values</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <div class="step-title">Design</div>
+                <div class="step-desc">Created wireframes and high-fidelity prototypes with calming aesthetics</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">05</div>
+                <div class="step-title">Test</div>
+                <div class="step-desc">Usability testing with functional timer and reward systems</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">06</div>
+                <div class="step-title">Iterate</div>
+                <div class="step-desc">Refined based on user feedback and technical constraints</div>
+            </div>
+        </div>
+
+        <h3>User Research Insights</h3>
+        <p>Through interviews with 15 college students, three major themes emerged:</p>
+        
+        <ul class="learnings-list">
+            <li>
+                <strong>Lack of Immediate Feedback</strong>
+                Students felt meditation benefits were too abstract and long-term. They wanted visible progress indicators.
+            </li>
+            <li>
+                <strong>Motivation Drop-Off</strong>
+                Initial enthusiasm faded after 1-2 weeks without external accountability or rewards.
+            </li>
+            <li>
+                <strong>Time Constraints</strong>
+                Long sessions (20+ minutes) were perceived as impossible to fit into busy schedules.
+            </li>
+        </ul>
+
+        <h3>Design Principles</h3>
+        <div class="two-column">
+            <div class="card">
+                <h4>🎨 Calming First</h4>
+                <p>Gamification elements enhance rather than overwhelm the peaceful meditation experience. Soft colors, generous spacing, and gentle animations create tranquility.</p>
+            </div>
+            <div class="card">
+                <h4>📊 Visible Progress</h4>
+                <p>Every action generates feedback through XP gains, level ups, and milestone achievements, making abstract benefits concrete.</p>
+            </div>
+            <div class="card">
+                <h4>⚡ Quick Wins</h4>
+                <p>Short 5-minute sessions reduce barriers to entry while still providing meaningful rewards and progress.</p>
+            </div>
+            <div class="card">
+                <h4>🔒 Progressive Unlocking</h4>
+                <p>Journey path with locked milestones creates anticipation and gives users clear long-term goals to work toward.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Design -->
+    <section class="content-section">
+        <h2>Visual Design</h2>
+        
+        <h3>Color Palette</h3>
+        <p>The color system was carefully chosen to evoke calm, nature, and mindfulness while maintaining sufficient contrast for accessibility.</p>
+        
+        <div class="color-palette">
+            <div class="color-swatch" style="background: #A8B5A0; color: white;">
+                <div class="color-name">Sage Green</div>
+                <div class="color-value">#A8B5A0</div>
+            </div>
+            <div class="color-swatch" style="background: #C5B9D4; color: white;">
+                <div class="color-name">Soft Lavender</div>
+                <div class="color-value">#C5B9D4</div>
+            </div>
+            <div class="color-swatch" style="background: #E8C5B5; color: #2D3E50;">
+                <div class="color-name">Warm Peach</div>
+                <div class="color-value">#E8C5B5</div>
+            </div>
+            <div class="color-swatch" style="background: #4A7C7E; color: white;">
+                <div class="color-name">Deep Teal</div>
+                <div class="color-value">#4A7C7E</div>
+            </div>
+            <div class="color-swatch" style="background: #F5F3EE; color: #2D3E50;">
+                <div class="color-name">Soft Cream</div>
+                <div class="color-value">#F5F3EE</div>
+            </div>
+        </div>
+
+        <h3>Typography</h3>
+        <div class="two-column">
+            <div class="card">
+                <h4>Crimson Pro (Serif)</h4>
+                <p>Used for headings and session titles to convey elegance, tradition, and the timeless nature of meditation practice.</p>
+            </div>
+            <div class="card">
+                <h4>DM Sans (Sans-serif)</h4>
+                <p>Clean, modern, and highly readable for body text, stats, and UI elements. Ensures accessibility and clarity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="content-section" id="solution">
+        <h2>Key Features</h2>
+
+        <h3>1. Functional Timer with Progress Visualization</h3>
+        <p>The meditation timer features a circular progress ring that visually depletes as time counts down. The design creates a meditative focal point while clearly showing remaining time.</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">▶️</div>
+                <div class="feature-title">Play/Pause Control</div>
+                <div class="feature-desc">Flexible control allows users to pause mid-session without losing progress</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">↻</div>
+                <div class="feature-title">Reset Function</div>
+                <div class="feature-desc">Quick restart if users want to begin the session again</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⏭</div>
+                <div class="feature-title">Skip to Complete</div>
+                <div class="feature-desc">Testing feature that also serves users who want to claim rewards</div>
+            </div>
+        </div>
+
+        <h3>2. Persistent Progress Tracking</h3>
+        <p>Using localStorage, the system maintains user progress across sessions, creating a sense of long-term investment and achievement. All progress persists even when users close their browser or navigate away.</p>
+        
+        <ul class="learnings-list">
+            <li>
+                <strong>XP System</strong>
+                Every completed session awards experience points (50-150 XP based on duration). XP is displayed in header with comma formatting for large numbers. Users start at 0 XP and can track their total growth.
+            </li>
+            <li>
+                <strong>Gems Currency</strong>
+                Secondary reward system (2-8 gems per session) could unlock future premium features like new meditation themes or ambient sounds.
+            </li>
+            <li>
+                <strong>Smart Streak Tracking</strong>
+                Checks if user meditated yesterday to increment streak, resets after missed days, and doesn't double-count same-day sessions. Starts at 0 and builds with consistency.
+            </li>
+            <li>
+                <strong>Achievement Persistence</strong>
+                Completed achievements are stored and badges turn green permanently. System tracks total sessions, time of day, and XP milestones to automatically award achievements.
+            </li>
+            <li>
+                <strong>Level Progression</strong>
+                Users begin at Level 0 (Beginner) with an empty progress circle, creating immediate satisfaction when first progress appears. Progress ring fills gradually as users earn XP.
+            </li>
+        </ul>
+
+        <h3>3. Gamified Journey Path</h3>
+        <p>Five milestone stages (Beginner → Practitioner → Seeker → Adept → Master) create clear progression goals. Users start at Beginner with all other milestones locked and grayed out. As users earn XP and complete sessions, milestones unlock sequentially, building anticipation and providing long-term motivation.</p>
+
+        <h3>4. Achievement System</h3>
+        <p>Badges reward specific behaviors and turn green when completed. All achievements are visible from the start with full-color icons on white backgrounds. Upon completion, badges transform with a green background and white text to clearly indicate progress.</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">First Session</div>
+                <div class="feature-desc">Awarded immediately after completing first meditation</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔥</div>
+                <div class="feature-title">7 Day Streak</div>
+                <div class="feature-desc">Unlock by maintaining consecutive daily practice</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⏰</div>
+                <div class="feature-title">Early Bird</div>
+                <div class="feature-desc">Complete a session before 9 AM</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🌙</div>
+                <div class="feature-title">Night Owl</div>
+                <div class="feature-desc">Complete a session after 9 PM</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💯</div>
+                <div class="feature-title">Century Club</div>
+                <div class="feature-desc">Reach 100 total completed sessions</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👑</div>
+                <div class="feature-title">Zen Master</div>
+                <div class="feature-desc">Earn 5,000+ total experience points</div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 2rem;"><strong>Visual Design Choice:</strong> Rather than showing locked/grayed out achievements (which can feel discouraging), all badges remain colorful and visible. The green background completion state creates positive reinforcement without the negative framing of "locked" content.</p>
+    </section>
+
+    <!-- Technical Implementation -->
+    <section class="content-section">
+        <h2>Technical Implementation</h2>
+        
+        <div class="two-column">
+            <div class="card">
+                <h4>Front-end Architecture</h4>
+                <p>Built with vanilla HTML, CSS, and JavaScript for performance and accessibility. No frameworks ensures fast load times and simplicity.</p>
+            </div>
+            <div class="card">
+                <h4>Data Persistence</h4>
+                <p>localStorage API manages user progress, allowing offline functionality and instant load times without backend infrastructure.</p>
+            </div>
+            <div class="card">
+                <h4>Responsive Design</h4>
+                <p>Mobile-first approach with breakpoints at 768px ensures excellent experience on all devices from phones to desktop.</p>
+            </div>
+            <div class="card">
+                <h4>Accessibility</h4>
+                <p>WCAG 2.1 AA compliant color contrast, keyboard navigation support, and semantic HTML for screen readers.</p>
+            </div>
+        </div>
+
+        <h3>Code Highlights</h3>
+        <ul class="learnings-list">
+            <li>
+                <strong>Circular Timer Animation</strong>
+                SVG stroke-dashoffset calculation creates smooth countdown visualization synchronized with JavaScript setInterval.
+            </li>
+            <li>
+                <strong>Streak Logic</strong>
+                Date comparison algorithm checks if last session was yesterday, today, or earlier to maintain accurate streak counting.
+            </li>
+            <li>
+                <strong>Achievement Tracking System</strong>
+                Automatic detection of achievement conditions (first session, 7-day streak, time-based badges, milestone completions) with green visual state changes and localStorage persistence.
+            </li>
+            <li>
+                <strong>Confetti Celebration</strong>
+                Dynamically generated DOM elements with randomized positions, colors, and animations celebrate session completion.
+            </li>
+            <li>
+                <strong>Progress State Management</strong>
+                All user data (XP, gems, streaks, achievements, total sessions) managed through localStorage with real-time UI updates and persistent state across sessions.
+            </li>
+        </ul>
+    </section>
+
+    <!-- Learnings & Next Steps -->
+    <section class="content-section">
+        <h2>Key Learnings & Reflections</h2>
+        
+        <ul class="learnings-list">
+            <li>
+                <strong>Balancing Gamification with Mindfulness</strong>
+                The biggest challenge was incorporating motivating game mechanics without creating anxiety or competitive stress. Soft colors, gentle animations, and personal (not social) progress tracking solved this.
+            </li>
+            <li>
+                <strong>Importance of Quick Wins</strong>
+                5-minute sessions were crucial. Users appreciated low time commitment while still earning meaningful rewards, reducing intimidation factor.
+            </li>
+            <li>
+                <strong>Persistent Data Creates Ownership</strong>
+                Users immediately connected with progress that persisted across sessions. Seeing cumulative XP and maintaining streaks created emotional investment.
+            </li>
+            <li>
+                <strong>Visual Feedback is Essential</strong>
+                Every interaction needed visual response: hover states, animations, progress bars, confetti. Silent interactions felt broken to users.
+            </li>
+            <li>
+                <strong>Positive Framing Over Locked Content</strong>
+                Showing all achievements in full color (rather than grayed out) proved more motivating. Users felt inspired by goals rather than discouraged by locked content. Green completion states provide clear positive reinforcement.
+            </li>
+            <li>
+                <strong>Starting from Zero Matters</strong>
+                Beginning at Level 0 with an empty progress circle gives users immediate gratification when they complete their first session and see measurable progress. Starting at Level 8 would diminish the sense of achievement.
+            </li>
+        </ul>
+
+        <h3>Future Enhancements</h3>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🎵</div>
+                <div class="feature-title">Ambient Sounds</div>
+                <div class="feature-desc">Nature sounds, binaural beats, or silence options during meditation</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">Social Features</div>
+                <div class="feature-desc">Optional friend groups for accountability without toxic competition</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">Mobile App</div>
+                <div class="feature-desc">Native iOS/Android with push notifications for streak reminders</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Analytics Dashboard</div>
+                <div class="feature-desc">Insights on meditation patterns, peak times, total minutes practiced</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-title">Theme Customization</div>
+                <div class="feature-desc">Unlockable color schemes and visual themes based on user preferences</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🧘</div>
+                <div class="feature-title">Guided Sessions</div>
+                <div class="feature-desc">Audio-guided meditations for different goals: focus, sleep, anxiety, etc.</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="meditation-website.html" class="cta-button" target="_blank">Try Live Demo →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+        <p>&copy; 2026 Kevali Shah - UX/UI Designer & Developer</p>
+        <div class="footer-nav">
+            <a href="#overview">Overview</a>
+            <a href="#process">Process</a>
+            <a href="#solution">Solution</a>
+            <a href="mailto:ktshah@ucdavis.edu">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-section, .card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
